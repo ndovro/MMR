@@ -1,6 +1,8 @@
 ```markdown
 # Pan-cancer insights: A Study of Microbial Metabolite Receptors in Malignancy Dynamics.
 
+Research increasingly shows that bacteria, the largest part of the gut microbiome, may play a significant role in cancer. These microorganisms produce metabolites that can travel through the body, and interact with host cells via microbial metabolite receptors, potentially affecting cancer development. This study investigates the involvement of these receptors in human cells across twenty-three types of cancer. By analyzing data from both cancer cell lines and human tumor samples, we examined how these interactions may impact key cancer-related processes, such as immune response, tumor growth, and spread. Notably, we identified several receptors that are consistently altered in cancer, which might serve as helpful biomarkers for diagnosis or treatment. This research highlights the potential of targeting the gut microbiome in cancer therapy and provides valuable insights for developing new cancer treatments based on microbiome interactions.
+
 ## Overview
 This repository provides a comprehensive pipeline for analyzing and visualizing pan-cancer RNA-seq data, including CCLE RNA-seq data and TCGA datasets. The analysis includes quantile normalization, differential expression, ligand and receptor mapping, heatmap generation, and bar plot visualizations. It is designed to explore tissue-specific and ligand-specific expression patterns, focusing on microbial metabolite receptors (MMRs) and hallmark genes/pathways.
 
