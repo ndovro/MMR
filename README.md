@@ -1,5 +1,5 @@
 ```markdown
-# Pan-Cancer Gene Expression Analysis and Visualization
+# Pan-cancer insights: A Study of Microbial Metabolite Receptors in Malignancy Dynamics.
 
 ## Overview
 This repository provides a comprehensive pipeline for analyzing and visualizing pan-cancer RNA-seq data, including CCLE RNA-seq data and TCGA datasets. The analysis includes quantile normalization, differential expression, ligand and receptor mapping, heatmap generation, and bar plot visualizations. It is designed to explore tissue-specific and ligand-specific expression patterns, focusing on microbial metabolite receptors (MMRs) and hallmark genes/pathways.
