@@ -31,7 +31,7 @@
 ## Setup
 
 ### Required Libraries
-- **Base Libraries**: `tidyverse`, `dplyr`, `ggplot2`, `reshape2`, `readr`
+- **Base Libraries**: `tidyverse`, `dplyr`, `ggplot2`, `reshape2`, `readr`, `Hmisc`
 - **Bioconductor Libraries**: `preprocessCore`, `org.Hs.eg.db`, `pheatmap`, `recount3`
 - **Visualization Libraries**: `RColorBrewer`, `ggcorrplot`, `gplots`
 
