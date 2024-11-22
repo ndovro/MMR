@@ -34,15 +34,9 @@ This repository provides a comprehensive pipeline for analyzing and visualizing 
 
 ### Required Libraries
 - **Base Libraries**: `tidyverse`, `dplyr`, `ggplot2`, `reshape2`, `readr`
-- **Bioconductor Libraries**: `preprocessCore`, `org.Hs.eg.db`, `pheatmap`
+- **Bioconductor Libraries**: `preprocessCore`, `org.Hs.eg.db`, `pheatmap`, `recount3`
 - **Visualization Libraries**: `RColorBrewer`, `ggcorrplot`, `gplots`
 
-### Installation
-Install Bioconductor libraries if not already installed:
-```r
-BiocManager::install("preprocessCore")
-BiocManager::install("org.Hs.eg.db")
-```
 
 Install other required libraries:
 ```r
