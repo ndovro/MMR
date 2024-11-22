@@ -50,7 +50,8 @@ install.packages(c("tidyverse", "ggplot2", "reshape2", "readr", "RColorBrewer", 
 ### Preprocess CCLE Data
 - Use `ccle_data.R` to normalize CCLE RNA-seq data, map genes, and identify tissue-specific expression patterns.
 - **Outputs**: `ccle_tpm_quantiles.csv`, `ccle_tpm_site.csv`.
-- This File is required for Figure 1 and Supplementary 
+- This File is required for Figure 1 and Supplementary Figure 1
+- Figure 1. Microbial Metabolite Receptor (MMR) expression in the Cancer Cell Line Encyclopedia (CCLE) dataset. A) MMR with the highest expression per tissue-specific cell line B) MMRs summarized by their ligand showing which tissue-specific cell line those are highly expressed in.
 
 ### Pan-Cancer Analysis
 - Use `recount3_expression.R` to analyze TCGA data, identify differentially expressed genes, and annotate results.
@@ -59,12 +60,13 @@ install.packages(c("tidyverse", "ggplot2", "reshape2", "readr", "RColorBrewer", 
 ### Ligand and Hallmark Pathway Analysis
 - Use `hallmark_genes.R` and `hallmark_pathways.R` to assess ligand and hallmark pathway correlations to MMRs.
 - **Outputs**: Ligand-specific and pathway-specific heatmaps and bar plots. These create Figure 5 components.
+- Figure 5. A) Pairwise Spearman correlation of Cancer Hallmark Genes (CHGs) and Microbial Metabolite Receptors (MMRs) based on their expression B) Pairwise Spearman correlation of MMRs when the CHGs are aggregated into Cancer Hallmark Pathways (CHPs) C) Summary of the strongest correlations between MMRs and CHPs
 
 ### Generate Figures
 - Use `FIGURES2-3-4.R` to generate visualizations:
-  - **Figure 2**: Heatmap of gene expression and ligand pathways.
-  - **Figure 3**: Bar plot of up- and down-regulated genes per cancer type.
-  - **Figure 4**: Correlation analysis heatmap.
+  - Figure 2. Differential Expression of Microbial Metabolite Receptors (MMRs) in a pancancer setting. A) Each MMR’s dysregulation versus control samples per studied cancer type  B) MMR expression dysregulation summarized by ligand type per studied cancer type. Red color signifies Upregulation and blue Downregulation.
+  - Figure 3. Top dysregulated Microbial Metabolite Receptors (MMRs) per studied cancer type. X-axis represents log2FoldChange values while the dashed red lines signify log2FoldChange of ±1.
+  - Figure 4. Spearman Correlation Heatmap showcasing the relationship between cancer types based on MMR expression profiles. Red indicates a positive correlation while blue highlights inverse correlations.
 
 ---
 
