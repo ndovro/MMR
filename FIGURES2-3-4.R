@@ -30,6 +30,8 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 library(tidyverse)
+library(Hmisc) 
+
 
 setwd("/YOUR/WORKING/DIRECTORY")
 # Get all CSV files in the current directory
@@ -141,14 +143,40 @@ pheatmap(heatmap_data,
 
 ##############################FIGURE 4####################################
 
-library(ggcorrplot)
-library(GGally)
+
+# Transpose Data for Correlation
+heatmap_data_t <- t(heatmap_data)
+
+# Calculate Spearman Correlation and P-Values
+corr_results <- rcorr(heatmap_data_t, type = "spearman")
+corr_matrix <- corr_results$r # Correlation matrix
+p_matrix <- corr_results$P   # P-value matrix
+
+# Create Significance Levels (Asterisks)
+sig_levels <- matrix("", nrow = nrow(p_matrix), ncol = ncol(p_matrix))
+sig_levels[p_matrix <= 0.001] <- "***"
+sig_levels[p_matrix > 0.001 & p_matrix <= 0.01] <- "**"
+sig_levels[p_matrix > 0.01 & p_matrix <= 0.05] <- "*"
 
 
-ggcorr(t(heatmap_data), method = c("all.obs", "spearman"),  nbreaks = 4, size = 3, low = "blue", mid = "white", high = "red")
+
+long_corr <- as.data.frame(as.table(corr_matrix))
+long_corr$Significance <- as.vector(sig_levels)
 
 
 
+
+break_points <- c(-1,  0, 1)
+break_colors <- c("blue", "white",  "red")
+
+# Plot Correlation Matrix
+ggplot(long_corr, aes(Var1, Var2)) +
+  geom_tile(aes(fill = Freq)) +
+  scale_fill_gradientn(colors = break_colors, values = scales::rescale(break_points), limits = c(-1, 1)) +
+  geom_text(aes(label = Significance), color = "black", size = 4) +
+  theme_minimal() +
+  labs(x = "", y = "", fill = "Correlation", title = "Spearman correlation of cancer types based on their MMR transcriptomic profile" ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
 #####################HEATMAP LIGANDS - FIGURE 2B
