@@ -73,10 +73,6 @@ install.packages(c("tidyverse", "ggplot2", "reshape2", "readr", "RColorBrewer", 
 ### Important!!
 - Change the directories where necessary
 - All necessary input files are provided.
----
-
-## Contributing
-Contributions to improve the pipeline, fix bugs, or add new features are welcome. Please create a pull request or open an issue for discussion.
 
 ---
 
