@@ -56,14 +56,15 @@ install.packages(c("tidyverse", "ggplot2", "reshape2", "readr", "RColorBrewer", 
 ### Preprocess CCLE Data
 - Use `ccle_data.R` to normalize CCLE RNA-seq data, map genes, and identify tissue-specific expression patterns.
 - **Outputs**: `ccle_tpm_quantiles.csv`, `ccle_tpm_site.csv`.
+- This File is required for Figure 1 and Supplementary 
 
 ### Pan-Cancer Analysis
 - Use `recount3_expression.R` to analyze TCGA data, identify differentially expressed genes, and annotate results.
-- **Outputs**: Differential expression results for genes and pathways.
+- **Outputs**: Differential expression results for genes.
 
 ### Ligand and Hallmark Pathway Analysis
-- Use `hallmark_genes.R` and `hallmark_pathways.R` to assess ligand and hallmark pathway expression.
-- **Outputs**: Ligand-specific and pathway-specific heatmaps and bar plots.
+- Use `hallmark_genes.R` and `hallmark_pathways.R` to assess ligand and hallmark pathway correlations to MMRs.
+- **Outputs**: Ligand-specific and pathway-specific heatmaps and bar plots. These create Figure 5 components.
 
 ### Generate Figures
 - Use `FIGURES2-3-4.R` to generate visualizations:
@@ -73,21 +74,9 @@ install.packages(c("tidyverse", "ggplot2", "reshape2", "readr", "RColorBrewer", 
 
 ---
 
-## Output Files
-- **Normalized Data**: `ccle_tpm_quantiles.csv`, `ccle_tpm_site.csv`
-- **Heatmaps**: `heatmap.csv`
-- **Bar Plots**: Plots saved in the specified directory for each figure.
-- **Differential Expression**: CSV files for full and filtered gene sets.
-
----
-
-## Directory Structure
-```
-/data          # Input and output CSV files
-/scripts       # R scripts for each step of the analysis
-/figures       # Generated plots and visualizations
-```
-
+###Important!!
+- Change the directories where necessary
+- All necessary input files are provided.
 ---
 
 ## Contributing
@@ -102,5 +91,4 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 - **Data Sources**: TCGA and CCLE for providing publicly available RNA-seq data.
-- **Libraries**: Developers of the `recount3` and `preprocessCore` libraries for enabling robust data handling.
-```
+
