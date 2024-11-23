@@ -57,8 +57,8 @@ Research increasingly shows that bacteria, the largest part of the gut microbiom
 - Use `recount3_expression.R` to analyze TCGA data, identify differentially expressed genes, and annotate results.
 - **Outputs**: Differential expression results for genes.
 
-### Ligand and Hallmark Pathway Analysis
-- Use `hallmark_genes.R` and `hallmark_pathways.R` to assess ligand and hallmark pathway correlations to MMRs.
+### Hallmark Genes and Pathways Analysis
+- Use `hallmark_genes.R` and `hallmark_pathways.R` to assess hallmark genes and pathways correlations to MMRs.
 - **Outputs**: Ligand-specific and pathway-specific heatmaps and bar plots. These create Figure 5 components.
 - Figure 5. A) Pairwise Spearman correlation of Cancer Hallmark Genes (CHGs) and Microbial Metabolite Receptors (MMRs) based on their expression B) Pairwise Spearman correlation of MMRs when the CHGs are aggregated into Cancer Hallmark Pathways (CHPs) C) Summary of the strongest correlations between MMRs and CHPs
 
