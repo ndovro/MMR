@@ -59,7 +59,7 @@ Research increasingly shows that bacteria, the largest part of the gut microbiom
 
 ### Hallmark Genes and Pathways Analysis
 - Use `hallmark_genes.R` and `hallmark_pathways.R` to assess hallmark genes and pathways correlations to MMRs.
-- **Outputs**: Ligand-specific and pathway-specific heatmaps and bar plots. These create Figure 5 components.
+- **Outputs**: Gene-specific and pathway-specific heatmaps and bar plots. These create Figure 5 components.
 - Figure 5. A) Pairwise Spearman correlation of Cancer Hallmark Genes (CHGs) and Microbial Metabolite Receptors (MMRs) based on their expression B) Pairwise Spearman correlation of MMRs when the CHGs are aggregated into Cancer Hallmark Pathways (CHPs) C) Summary of the strongest correlations between MMRs and CHPs
 
 ### Generate Figures
