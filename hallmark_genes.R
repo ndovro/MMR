@@ -18,6 +18,7 @@ library(purrr)
 library(readr)
 library(ggplot2)
 library(GGally)
+library(Hmisc)
 setwd("/YOUR/WORKING/DIRECTORY")
 
 MMR <-c("FFAR1", "FFAR2", "FFAR3", "FFAR4", "HCAR1", "HCAR2", "HCAR3", "GPR84", "PPARA", "PPARD", "PPARG", "PPARGC1A", "PPARGC1B", "LPAR1", "LPAR2", "LPAR3", "LPAR4", "LPAR5", "LPAR6", "AHR", "AHRR", "GPR35", "HTR1A", "HTR1B", "HTR1D", "HTR1E", "HTR1F", "HTR2A", "HTR2B", "HTR2C", "HTR3A", "HTR3B", "HTR3C", "HTR4", "HTR5A", "HTR6", "HTR7", "GPBAR1", "CHRM1", "CHRM2", "CHRM3", "CHRM4", "CHRM5", "NR1H4", "VDR", "NR1I2", "NR1I3", "GABRA1", "GABRB2", "GABRG2", "AR", "ESR1", "ESR2", "S1PR1", "S1PR2", "S1PR3", "S1PR4", "S1PR5", "RARA", "RARB", "RARG", "RXRA", "RXRB", "RXRG", "TRPV1", "TRPV2", "TRPV3", "TRPV4", "TRPA1", "TRPM8", "CNR1", "CNR2", "GPR55", "GPR119", "HRH1", "HRH2", "HRH3", "HRH4", "DRD1", "DRD2", "DRD3", "DRD4", "ADRA1A", "ADRA1B", "ADRA1D", "ADRA2A", "ADRA2B", "ADRA2C", "ADRB1", "ADRB2", "ADRB3", "ADORA1", "ADORA2A", "ADORA3", "P2RY1", "P2RY2", "P2RY4", "P2RY6", "P2RY8", "P2RY10", "P2RY11", "P2RY12", "P2RY13", "P2RY14", "P2RX1", "P2RX4", "P2RX7")
@@ -90,19 +91,39 @@ combined_df <- combined_df %>% select(-symbol)
 MMR_df <- combined_df[rownames(combined_df) %in% MMR, ]
 HALLMARK_df <- combined_df[rownames(combined_df) %in% HALLMARK, ]
 
-# Calculate pairwise correlations
-correlation_matrix <- outer(
-  rownames(MMR_df), rownames(HALLMARK_df),
-  Vectorize(function(x, y) cor(as.numeric(MMR_df[x, ]), as.numeric(HALLMARK_df[y, ]), method="spearman"))
-)
 
-# Set row and column names of the correlation matrix
+# Initialize matrices to store results
+correlation_matrix <- matrix(NA, nrow = nrow(MMR_df), ncol = nrow(HALLMARK_df))
+p_value_matrix <- matrix(NA, nrow = nrow(MMR_df), ncol = nrow(HALLMARK_df))
+
+# Calculate pairwise Spearman correlations and p-values
+for (i in 1:nrow(MMR_df)) {
+  for (j in 1:nrow(HALLMARK_df)) {
+    # Perform rcorr for each pair of rows
+    result <- rcorr(as.numeric(MMR_df[i, ]), as.numeric(HALLMARK_df[j, ]), type = "spearman")
+    
+    # Extract the correlation and p-value
+    correlation_matrix[i, j] <- result$r[1, 2]
+    p_value_matrix[i, j] <- result$P[1, 2]
+  }
+}
+
+# Set row and column names for the matrices
 rownames(correlation_matrix) <- rownames(MMR_df)
 colnames(correlation_matrix) <- rownames(HALLMARK_df)
+
+rownames(p_value_matrix) <- rownames(MMR_df)
+colnames(p_value_matrix) <- rownames(HALLMARK_df)
+
+
+
+
 
 
 # Convert correlation matrix to data frame for ggplot2
 correlation_df <- as.data.frame(as.table(correlation_matrix))
+correlation_df$P_value <- as.vector(p_value_matrix)
+
 write.csv (correlation_df,"correlation_full.csv")
 
 
