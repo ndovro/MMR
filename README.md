@@ -48,6 +48,7 @@ Research increasingly shows that bacteria, the largest part of the gut microbiom
 ## Usage
 
 ### Preprocess CCLE Data
+- Download https://depmap.org/portal/data_page/?tab=allData&releasename=CCLE%202019&filename=CCLE_RNAseq_rsem_genes_tpm_20180929.txt.gz . gunzip and save in your working dir
 - Use `ccle_data.R` to normalize CCLE RNA-seq data, map genes, and identify tissue-specific expression patterns.
 - **Outputs**: `ccle_tpm_quantiles.csv`, `ccle_tpm_site.csv`.
 - This File is required for Figure 1 and Supplementary Figure 1
